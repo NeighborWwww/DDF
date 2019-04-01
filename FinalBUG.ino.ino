@@ -1,7 +1,7 @@
 #include <IRremote.h>
 #include <stdio.h>
 #include <LiquidCrystal.h>
-volatile int RECV_PIN = 10;
+int RECV_PIN = 10;
 volatile int iptBuff = 0;
 volatile int mode = 0;
 volatile int minite = 0;
@@ -55,6 +55,17 @@ void setup()
 
 }
 void disp_d(int n1,int n2, int n3){
+   lcd.clear(); // start with a blank screen (refresh)
+   lcd.setCursor(0, 1);
+   lcd.print(n1);
+   lcd.setCursor(2,1);
+   lcd.print(".");
+   lcd.setCursor(3,1);
+   lcd.print(n2);
+   lcd.setCursor(5,1);
+   lcd.print(".");
+   lcd.setCursor(6,1);
+   lcd.print(n3);
    Serial.print(n1);
    Serial.print(".");
    Serial.print(n2);
@@ -63,7 +74,17 @@ void disp_d(int n1,int n2, int n3){
    Serial.println("");
 }
 void disp(int n1,int n2,int n3){
-
+  lcd.clear(); // start with a blank screen (refresh)
+  lcd.setCursor(0, 0);
+  lcd.print(n1);
+  lcd.setCursor(2,0);
+  lcd.print(":");
+  lcd.setCursor(3,0);
+  lcd.print(n2);
+  lcd.setCursor(5,0);
+  lcd.print(":");
+  lcd.setCursor(6,0);
+  lcd.print(n3);
   Serial.print(n1);
   Serial.print(":");
   Serial.print(n2);
